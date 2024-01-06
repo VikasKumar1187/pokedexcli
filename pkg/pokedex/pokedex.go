@@ -18,13 +18,13 @@ type Config struct {
 
 // Pokedex represents the Pokedex application.
 type Repl struct {
-	commands map[string]func(*Config)
+	commands map[string]func(*Config) error
 }
 
 // NewPokedex creates a new instance of Pokedex.
 func NewRepl() *Repl {
 	return &Repl{
-		commands: map[string]func(*Config){
+		commands: map[string]func(*Config) error{
 			"help": helpCommand,
 			"exit": exitCommand,
 			"map":  mapCommand,
@@ -52,7 +52,11 @@ func (rpl *Repl) StartREPL(cfg *Config) {
 		userInput := strings.TrimSpace(scanner.Text())
 
 		if command, exists := rpl.commands[userInput]; exists {
-			command(cfg)
+			err := command(cfg)
+			if err != nil {
+				fmt.Println(err)
+			}
+			continue
 		} else {
 			fmt.Printf("Unknown command: %s. Type 'help' for usage.\n", userInput)
 		}

@@ -7,7 +7,8 @@ import (
 )
 
 // exitCommand exits the Pokedex CLI.
-func exitCommand(*Config) {
+func exitCommand(*Config) error {
 	fmt.Println("Goodbye! Exiting Pokedex.")
 	os.Exit(0)
+	return nil
 }

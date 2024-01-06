@@ -8,9 +8,9 @@ import (
 )
 
 func main() {
-	pokeClient := pokeapi.NewClient(5 * time.Second)
+	client := pokeapi.NewClient(5 * time.Second)
 	cfg := &pokedex.Config{
-		PokeApiClient: pokeClient,
+		PokeApiClient: client,
 	}
 
 	pokedex.StartPokedex(cfg)
