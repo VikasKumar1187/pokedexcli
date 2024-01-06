@@ -1,5 +1,5 @@
 // pkg/repl/help.go
-package repl
+package pokedex
 
 import "fmt"
 

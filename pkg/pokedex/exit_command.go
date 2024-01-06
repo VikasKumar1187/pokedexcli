@@ -1,5 +1,5 @@
 // pkg/repl/exit.go
-package repl
+package pokedex
 
 import (
 	"fmt"

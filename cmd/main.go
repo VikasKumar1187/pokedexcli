@@ -1,10 +1,17 @@
 package main
 
 import (
-	"github.com/VikasKumar1187/pokedexcli/pkg/repl"
+	"time"
+
+	"github.com/VikasKumar1187/pokedexcli/internal/pokeapi"
+	"github.com/VikasKumar1187/pokedexcli/pkg/pokedex"
 )
 
 func main() {
+	pokeClient := pokeapi.NewClient(5 * time.Second)
+	cfg := &pokedex.Config{
+		PokeApiClient: pokeClient,
+	}
 
-	repl.Execute()
+	pokedex.StartPokedex(cfg)
 }

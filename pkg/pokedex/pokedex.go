@@ -1,12 +1,20 @@
-// pkg/repl/repl.go
-package repl
+// pkg/repl/pokedex.go
+package pokedex
 
 import (
 	"bufio"
 	"fmt"
 	"os"
 	"strings"
+
+	"github.com/VikasKumar1187/pokedexcli/internal/pokeapi"
 )
+
+type Config struct {
+	PokeApiClient    pokeapi.Client
+	NextLocationsURL *string
+	PrevLocationsURL *string
+}
 
 // Pokedex represents the Pokedex application.
 type Repl struct {
@@ -24,7 +32,7 @@ func NewRepl() *Repl {
 }
 
 // Execute is the main entry point for the Pokedex CLI.
-func Execute() {
+func StartPokedex(cfg *Config) {
 	repl := NewRepl()
 	repl.StartREPL()
 }
