@@ -4,7 +4,7 @@ package pokedex
 import "fmt"
 
 // helpCommand displays help information.
-func helpCommand() {
+func helpCommand(*Config) {
 	fmt.Println("Available commands:")
 	fmt.Println("  help: prints this help message")
 	fmt.Println("  exit: exits the Pokedex")
