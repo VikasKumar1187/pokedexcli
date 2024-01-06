@@ -7,14 +7,24 @@ import (
 
 // Client -
 type Client struct {
-	httpClient http.Client
+	httpClient *http.Client
 }
 
 // NewClient -
-func NewClient(timeout time.Duration) Client {
-	return Client{
-		httpClient: http.Client{
+func NewClient(timeout time.Duration) *Client {
+
+	client := &Client{
+		httpClient: &http.Client{
 			Timeout: timeout,
 		},
 	}
+	return client
+
+	// OR
+
+	// return &Client{
+	// 	httpClient: &http.Client{
+	// 		Timeout: timeout,
+	// 	},
+	// }
 }
